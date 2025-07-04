@@ -15,3 +15,4 @@ jdatetime
 ping3
 edge-tts
 python-bale-bot
+python-dotenv

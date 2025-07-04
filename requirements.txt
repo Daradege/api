@@ -1,0 +1,17 @@
+flask
+beautifulsoup4
+requests
+pillow
+qrcode
+markdownify
+arabic-reshaper
+python-bidi
+pyrobale==0.2.9.4.1
+googlesearch-python
+flask-cors
+aparat-python
+feedparser
+jdatetime
+ping3
+edge-tts
+python-bale-bot

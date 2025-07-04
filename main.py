@@ -955,7 +955,7 @@ def basalam():
         return jsonify({"error": "No query provided"}), 400
 
     from_item = (int(page) - 1) * 12
-    url = f"https://search.basalam.com/ai-engine/api/v2.0/product/search?from={from_item}&q=query}&dynamicFacets=true&size=12&enableNavigations=true&adsImpressionDisable=false&grouped=true"
+    url = f"https://search.basalam.com/ai-engine/api/v2.0/product/search?from={from_item}&q=query&dynamicFacets=true&size=12&enableNavigations=true&adsImpressionDisable=false&grouped=true"
     return jsonify(requests.get(url).json())
 
 
@@ -1005,8 +1005,7 @@ def get_favicon_url(site_url):
                 return base_url + "/" + icon_href
         else:
             parsed_url = urlparse(site_url)
-            default_favicon = f"{
-                parsed_url.scheme}://{parsed_url.netloc}/favicon.ico"
+            default_favicon = f"{parsed_url.scheme}://{parsed_url.netloc}/favicon.ico"
             try:
                 icon_response = requests.get(default_favicon, timeout=5)
                 if icon_response.status_code != 200:

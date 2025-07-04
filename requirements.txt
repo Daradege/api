@@ -1,10 +1,8 @@
 flask
 beautifulsoup4
 requests
-pillow
 qrcode
 markdownify
-arabic-reshaper
 python-bidi
 googlesearch-python
 flask-cors

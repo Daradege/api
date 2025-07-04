@@ -432,8 +432,7 @@ def translate():
     if not lang:
         return "No language provided", 400
     if lang not in translator_suppoted_langs:
-        return f"Invalid language; supported langs: {
-            ' '.join(translator_suppoted_langs)}", 400
+        return f"Invalid language; supported langs: {' '.join(translator_suppoted_langs)}", 400
     result = translate_to_any_lang(text, lang)
     return jsonify({"text": result})
 
@@ -956,8 +955,7 @@ def basalam():
         return jsonify({"error": "No query provided"}), 400
 
     from_item = (int(page) - 1) * 12
-    url = f"https://search.basalam.com/ai-engine/api/v2.0/product/search?from={from_item}&q={
-        query}&dynamicFacets=true&size=12&enableNavigations=true&adsImpressionDisable=false&grouped=true"
+    url = f"https://search.basalam.com/ai-engine/api/v2.0/product/search?from={from_item}&q=query}&dynamicFacets=true&size=12&enableNavigations=true&adsImpressionDisable=false&grouped=true"
     return jsonify(requests.get(url).json())
 
 
@@ -975,8 +973,7 @@ def quransearch():
     if not query:
         return jsonify({"error": "No query provided"}), 400
 
-    url = f"https://quran.com/api/proxy/search/v1/search?mode=quick&query={
-        query}&get_text=1&highlight=1&per_page=10&page={page}&translation_ids=131"
+    url = f"https://quran.com/api/proxy/search/v1/search?mode=quick&query={query}&get_text=1&highlight=1&per_page=10&page={page}&translation_ids=131"
     return jsonify(requests.get(url).json())
 
 
@@ -1014,20 +1011,17 @@ def get_favicon_url(site_url):
                 icon_response = requests.get(default_favicon, timeout=5)
                 if icon_response.status_code != 200:
                     domain_first_letter = parsed_url.netloc[0].upper()
-                    fallback_icon = f"https://dummyimage.com/128x128/012/666.png&text={
-                        domain_first_letter}"
+                    fallback_icon = f"https://dummyimage.com/128x128/012/666.png&text={domain_first_letter}"
                     return fallback_icon
                 return default_favicon
             except BaseException:
                 domain_first_letter = parsed_url.netloc[0].upper()
-                fallback_icon = f"https://dummyimage.com/128x128/012/666.png&text={
-                    domain_first_letter}"
+                fallback_icon = f"https://dummyimage.com/128x128/012/666.png&text={domain_first_letter}"
                 return fallback_icon
     except Exception as e:
         parsed_url = urlparse(site_url)
         domain_first_letter = parsed_url.netloc[0].upper()
-        fallback_icon = f"https://dummyimage.com/128x128/012/666.png&text={
-            domain_first_letter}"
+        fallback_icon = f"https://dummyimage.com/128x128/012/666.png&text={domain_first_letter}"
         return fallback_icon
 
 
@@ -1192,8 +1186,7 @@ def quranvoice():
         return jsonify(
             {"status": "error", "message": "Reciter not found"}), 404
 
-    url = f"https://tanzil.ir/res/audio/{reciter}/{
-        str(surah).zfill(3)}{str(ayah).zfill(3)}.mp3"
+    url = f"https://tanzil.ir/res/audio/{reciter}/{str(surah).zfill(3)}{str(ayah).zfill(3)}.mp3"
     data = requests.get(url)
     if data.status_code == 404:
         return jsonify({"status": "error", "message": "Audio not found"}), 404

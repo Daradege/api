@@ -4,7 +4,7 @@
 [![API Status](https://img.shields.io/website?url=https%3A%2F%2Fapi.daradege.ir&up_message=online&down_message=offline&label=API)](https://api.daradege.ir)
 [![Liara Cloud](https://img.shields.io/badge/Hosted%20on-Liara%20Cloud-blue)](https://liara.ir)
 
-[🇺🇸 English](#english) | [🇮🇷 فارسی](#persian)
+[🇺🇸 English](#english) | [🇮🇷 فارسی](#persian) | [github](https://github.com/Daradege/api)
 
 <a name="english"></a>
 ## 🌐 English

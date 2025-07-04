@@ -1,0 +1,589 @@
+[
+  {
+    "title": "Text-to-Speech",
+    "method": "GET/POST",
+    "url": "/tts",
+    "description": "Converts text to speech audio.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Text to convert to speech"
+      }
+    ],
+    "returns": "Audio file (audio/mpeg)",
+    "example": "${baseUrl}tts?text=Hello%20World"
+  },
+  {
+    "title": "Image Generation",
+    "method": "GET/POST",
+    "url": "/image",
+    "description": "Generates an image based on text prompt.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Image description prompt"
+      }
+    ],
+    "returns": "Image file (image/jpeg)",
+    "example": "${baseUrl}image?text=beautiful%20sunset%20landscape"
+  },
+  {
+    "title": "Logo Generation",
+    "method": "GET/POST",
+    "url": "/logo",
+    "description": "Generates a logo based on text prompt.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Logo description prompt"
+      }
+    ],
+    "returns": "Image file (image/jpeg)",
+    "example": "${baseUrl}logo?text=beautiful%20sunset%20landscape"
+  },
+  {
+    "title": "ChatGPT",
+    "method": "GET/POST",
+    "url": "/ai",
+    "description": "Generates a response using an AI model.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Text input for the AI model"
+      }
+    ],
+    "returns": "JSON response with AI-generated text",
+    "example": "${baseUrl}ai?text=What%20is%20the%20meaning%20of%20life"
+  },
+  {
+    "title": "DeepSeek Model",
+    "method": "GET/POST",
+    "url": "/deepseek",
+    "description": "Generates a response using the DeepSeek AI model.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Text input for the DeepSeek model"
+      }
+    ],
+    "returns": "JSON response with DeepSeek-generated text",
+    "example": "${baseUrl}deepseek?text=Explain%20quantum%20mechanics"
+  },
+  {
+    "title": "Qwen Model",
+    "method": "GET/POST",
+    "url": "/qwen",
+    "description": "Generates a response using the Qwen 2.5 VL 72B AI model.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Text input for the Qwen model"
+      }
+    ],
+    "returns": "JSON response with Qwen-generated text",
+    "example": "${baseUrl}qwen?text=Tell%20me%20about%20artificial%20intelligence"
+  },
+  {
+    "title": "LLaMA Model",
+    "method": "GET/POST",
+    "url": "/llama",
+    "description": "Generates a response using the LLaMA 3.3 70B AI model.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Text input for the LLaMA model"
+      }
+    ],
+    "returns": "JSON response with LLaMA-generated text",
+    "example": "${baseUrl}llama?text=Explain%20machine%20learning"
+  },
+  {
+    "title": "NemoTron Model",
+    "method": "GET/POST",
+    "url": "/nemotron",
+    "description": "Generates a response using the NemoTron 70B AI model.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Text input for the NemoTron model"
+      }
+    ],
+    "returns": "JSON response with NemoTron-generated text",
+    "example": "${baseUrl}nemotron?text=How%20do%20neural%20networks%20work"
+  },
+  {
+    "title": "Air Quality Index",
+    "method": "GET/POST",
+    "url": "/aqi",
+    "description": "Fetches the Air Quality Index (AQI) for Tehran.",
+    "parameters": [],
+    "returns": "JSON response with AQI value",
+    "example": "${baseUrl}aqi"
+  },
+  {
+    "title": "Translation",
+    "method": "GET/POST",
+    "url": "/translate",
+    "description": "Translates text to a specified language.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Text to translate"
+      },
+      {
+        "name": "lang",
+        "required": true,
+        "description": "Target language code (e.g., 'en', 'fa')"
+      }
+    ],
+    "returns": "JSON response with translated text",
+    "example": "${baseUrl}translate?text=Hello&lang=fa"
+  },
+  {
+    "title": "Speech to Text",
+    "method": "POST",
+    "url": "/speechtotext",
+    "description": "Converts speech to text using the OpenAI Whisper API.",
+    "parameters": [
+      {
+        "name": "file",
+        "required": true,
+        "description": "Audio file (in WAV format) (send as bytes)"
+      }
+    ],
+    "returns": "JSON response with transcribed text",
+    "example": "${baseUrl}speechtotext"
+  },
+  {
+    "title": "Nameniko",
+    "method": "GET/POST",
+    "url": "/nameniko",
+    "description": "Searchs a name in Nameniko.com and returns the results.",
+    "parameters": [
+      {
+        "name": "name",
+        "required": true,
+        "description": "Name to search (in persian with farsi words)"
+      }
+    ],
+    "returns": "JSON response with search results",
+    "example": "${baseUrl}nameniko?name=علی"
+  },
+  {
+    "title": "Text Font Styling",
+    "method": "GET/POST",
+    "url": "/textfont",
+    "description": "Applies a stylized font to the provided text.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Text to style"
+      }
+    ],
+    "returns": "JSON response with styled text",
+    "example": "${baseUrl}textfont?text=Hello%20World"
+  },
+  {
+    "title": "Weather Information",
+    "method": "GET/POST",
+    "url": "/weather",
+    "description": "Fetches weather information for a specified city.",
+    "parameters": [
+      {
+        "name": "city",
+        "required": true,
+        "description": "City name"
+      }
+    ],
+    "returns": "JSON response with weather data",
+    "example": "${baseUrl}weather?city=Tehran"
+  },
+  {
+    "title": "Prayer Times",
+    "method": "GET/POST",
+    "url": "/owghat",
+    "description": "Fetches prayer times for a specified city.",
+    "parameters": [
+      {
+        "name": "city",
+        "required": true,
+        "description": "City name"
+      }
+    ],
+    "returns": "JSON response with prayer times",
+    "example": "${baseUrl}owghat?city=Tehran"
+  },
+  {
+    "title": "Time API",
+    "method": "GET/POST",
+    "url": "/time",
+    "description": "Fetches the current time.",
+    "parameters": [
+      {
+        "name": "epoch",
+        "required": false,
+        "description": "Custom epoch time (in seconds) (Optional)"
+      }
+    ],
+    "returns": "JSON response with current time",
+    "example": "${baseUrl}time?epoch=1630452000"
+  },
+  {
+    "title": "Faal Hafez",
+    "method": "GET/POST",
+    "url": "/faal",
+    "description": "Generates a random Faal Hafez (Persian poetry) image.",
+    "parameters": [],
+    "returns": "Image file (image/jpeg)",
+    "example": "${baseUrl}faal"
+  },
+  {
+    "title": "Random Joke",
+    "method": "GET/POST",
+    "url": "/joke",
+    "description": "Returns a random joke.",
+    "parameters": [],
+    "returns": "JSON response with joke data",
+    "example": "${baseUrl}joke"
+  },
+  {
+    "title": "Danestani (Fun Facts)",
+    "method": "GET/POST",
+    "url": "/danestani",
+    "description": "Returns a random fun fact.",
+    "parameters": [],
+    "returns": "JSON response with fun fact data",
+    "example": "${baseUrl}danestani"
+  },
+  {
+    "title": "IP Address",
+    "method": "GET/POST",
+    "url": "/ip",
+    "description": "Returns the client's IP address.",
+    "parameters": [],
+    "returns": "JSON response with IP address",
+    "example": "${baseUrl}ip"
+  },
+  {
+    "title": "WHOIS Lookup",
+    "method": "GET/POST",
+    "url": "/whois",
+    "description": "Performs a WHOIS lookup for a domain.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Domain name"
+      }
+    ],
+    "returns": "JSON response with WHOIS data",
+    "example": "${baseUrl}whois?text=example.com"
+  },
+  {
+    "title": "Ping",
+    "method": "GET/POST",
+    "url": "/ping",
+    "description": "Performs a ping request to a specified domain address.",
+    "parameters": [
+      {
+        "name": "host",
+        "required": true,
+        "description": "Domain address to ping"
+      }
+    ],
+    "returns": "JSON response with ping data",
+    "example": "${baseUrl}ping?host=example.com"
+  },
+  {
+    "title": "QR Code Generator",
+    "method": "GET/POST",
+    "url": "/qrcode",
+    "description": "Generates a QR code image from provided text.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Text to encode in QR code"
+      },
+      {
+        "name": "fill_color",
+        "required": false,
+        "description": "Color of QR code (default: black)"
+      },
+      {
+        "name": "back_color",
+        "required": false,
+        "description": "Background color (default: white)"
+      },
+      {
+        "name": "box_size",
+        "required": false,
+        "description": "Size of each box in pixels (default: 10)"
+      },
+      {
+        "name": "border",
+        "required": false,
+        "description": "Border size in boxes (default: 2)"
+      }
+    ],
+    "returns": "QR code image (image/png)",
+    "example": "${baseUrl}qrcode?text=Hello%20World"
+  },
+  {
+    "title": "Google Search",
+    "method": "GET/POST",
+    "url": "/google",
+    "description": "Searches your query in Google.",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Your search query"
+      }
+    ],
+    "returns": "Websites found as JSON",
+    "example": "${baseUrl}google?text=daradege"
+  },
+  {
+    "title": "Search song",
+    "method": "GET/POST",
+    "url": "/searchsong",
+    "description": "Search song in google",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Your search query"
+      },
+      {
+        "name": "mode",
+        "required": false,
+        "description": "can be 'first' or 'random' or a number"
+      }
+    ],
+    "returns": "songs found as JSON",
+    "example": "${baseUrl}searchsong?text=حیدر حیدر اول و آخر حیدر"
+  },
+  {
+    "title": "Aparat Video Info",
+    "method": "GET/POST",
+    "url": "/aparat",
+    "description": "Get video info from aparat",
+    "parameters": [
+      {
+        "name": "video",
+        "required": true,
+        "description": "Video id"
+      }
+    ],
+    "returns": "video info as JSON",
+    "example": "${baseUrl}aparat?video=guvp1s7"
+  },
+  {
+    "title": "Aparat Video Search",
+    "method": "GET/POST",
+    "url": "/aparatsearch-video",
+    "description": "Search video in aparat",
+    "parameters": [
+      {
+        "name": "text",
+        "required": true,
+        "description": "Your search query"
+      }
+    ],
+    "returns": "videos found as JSON",
+    "example": "${baseUrl}aparatsearch-video?text=minecraft"
+  },
+  {
+    "title": "News feeds",
+    "method": "GET/POST",
+    "url": "/news",
+    "description": "Get news feeds",
+    "parameters": [
+      {
+        "name": "source",
+        "required": true,
+        "description": "Source of news (isna/irna/irib/mehrnews/tasnim/digiato/rooziato/zoomit)"
+      },
+      {
+        "name": "mode",
+        "required": false,
+        "description": "How to show news (rss/json)"
+      }
+    ],
+    "returns": "news feeds as JSON/RSS",
+    "example": "${baseUrl}news?source=isna"
+  },
+  {
+    "title": "Bale username info",
+    "method": "GET/POST",
+    "url": "/bale_id_data",
+    "description": "Get's info about a bale channel or bot or user or public group",
+    "parameters": [
+      {
+        "name": "username",
+        "required": true,
+        "description": "your user's username"
+      }
+    ],
+    "returns": "a json of user's info",
+    "example": "${baseUrl}bale_id_data?username=@devhub"
+  },
+  {
+    "title": "Bale user id matcher",
+    "method": "GET/POST",
+    "url": "/bale_number_id",
+    "description": "compares a bale user id with a phone number",
+    "parameters": [
+      {
+        "name": "id",
+        "required": true,
+        "description": "a real user id or username (integer/string)"
+      },
+      {
+        "name": "number",
+        "required": true,
+        "description": "a real phone number (integer) with 09XXXXXXXXX format"
+      }
+    ],
+    "returns": "a json of user's info",
+    "example": "${baseUrl}bale_number_id?id=daradege&number=09123456789"
+  },
+  {
+    "title": "Digikala Search",
+    "method": "GET/POST",
+    "url": "/digikala",
+    "description": "Search products on Digikala",
+    "parameters": [
+      {
+        "name": "query",
+        "required": true,
+        "description": "Your search query"
+      },
+      {
+        "name": "page",
+        "required": false,
+        "description": "Page number (default: 1)"
+      }
+    ],
+    "returns": "search results as JSON",
+    "example": "${baseUrl}digikala?query=laptop"
+  },
+  {
+    "title": "Basalam Search",
+    "method": "GET/POST",
+    "url": "/basalam",
+    "description": "Search products on Basalam",
+    "parameters": [
+      {
+        "name": "query",
+        "required": true,
+        "description": "Your search query"
+      },
+      {
+        "name": "page",
+        "required": false,
+        "description": "Page number (default: 1)"
+      }
+    ],
+    "returns": "search results as JSON",
+    "example": "${baseUrl}basalam?query=mobile"
+  },
+  {
+    "title": "Quran Search",
+    "method": "GET/POST",
+    "url": "/quransearch",
+    "description": "Search in Quran translations",
+    "parameters": [
+      {
+        "name": "query",
+        "required": true,
+        "description": "Your search query"
+      },
+      {
+        "name": "page",
+        "required": false,
+        "description": "Page number (default: 1)"
+      }
+    ],
+    "returns": "search results as JSON",
+    "example": "${baseUrl}quransearch?query=peace"
+  },
+  {
+    "title": "Prices",
+    "method": "GET/POST",
+    "url": "/prices",
+    "description": "get prices of products",
+    "parameters": [],
+    "returns": "return results as JSON",
+    "example": "${baseUrl}prices"
+  },
+  {
+    "title": "Quran Surahs",
+    "method": "GET/POST",
+    "url": "/quransurahs",
+    "description": "Get list of Quran surahs",
+    "parameters": [],
+    "returns": "Quran surahs data as JSON",
+    "example": "${baseUrl}quransurahs"
+  },
+  {
+    "title": "Quran Voice",
+    "method": "GET/POST",
+    "url": "/quranvoice",
+    "description": "Get Quran audio recitation",
+    "parameters": [
+      {
+        "name": "surah",
+        "required": true,
+        "description": "Surah number (1-114)"
+      },
+      {
+        "name": "ayah",
+        "required": true,
+        "description": "Ayah number (1-286)"
+      },
+      {
+        "name": "reciter",
+        "required": false,
+        "description": "Reciter name (default: ghamadi)"
+      }
+    ],
+    "returns": "Audio file (MP3)",
+    "example": "${baseUrl}quranvoice?surah=1&ayah=1&reciter=ghamadi"
+  },
+  {
+    "title": "Quran Reciters",
+    "method": "GET/POST",
+    "url": "/quranreciters",
+    "description": "Get list of available Quran reciters",
+    "parameters": [],
+    "returns": "Reciters data as JSON",
+    "example": "${baseUrl}quranreciters"
+  },
+  {
+    "title": "Direct URL Datas",
+    "method": "GET/POST",
+    "url": "/get_directurl_data",
+    "description": "Get direct URL data",
+    "parameters": [
+      {
+        "name": "url",
+        "required": true,
+        "description": "URL to fetch data from"
+      }
+    ],
+    "returns": "Data from the URL as JSON",
+    "example": "${baseUrl}get_directurl_data?url=https://daradege.ir/logo.png"
+  }
+]

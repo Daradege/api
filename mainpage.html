@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daradege API Documentation</title>
+    <script src="https://cdn.jsdelivr.net/gh/Daradege/AgahJS@refs/heads/main/agah.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const popup_json = "https://raw.githubusercontent.com/Daradege/api/refs/heads/main/popup.json"
+            fetch(popup_json)
+            .then(response => response.json())
+            .then(data => {
+                if (data.show) {
+                showNotification({
+                    type: data.type,
+                    title: data.title,
+                    message: data.message,
+                    duration: data.duration,
+                    closable: data.closable,
+                })
+            }
+            })
+        })
+    </script>
     <style>
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;

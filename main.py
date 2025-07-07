@@ -110,6 +110,7 @@ async def tts_base(TEXT="Hi", VOICE="fa-IR-FaridNeural") -> bytes:
 def get_audio(text: str):
     return asyncio.run(tts_base(text))
 
+
 def get_aparat_vid(hash="guvp1s7"):
     vid = aparatclient.video(hash)
     return {attr: getattr(vid, attr)
@@ -139,63 +140,86 @@ def get_ping(host):
 
 def get_data_from_id(uid):
     url = "https://ble.ir/" + uid
-    response = requests.get(url)
-    if response.status_code != 200:
-        return {"status": "error", "error": "request failed"}
-
-    req = response.text
+    req = requests.get(url).text
     if """<p class="__404_title__lxIKL">گفتگوی مورد نظر وجود ندارد.</p>""" in req:
         return {"status": "error", "error": "not found"}
-
-    soup = bs4.BeautifulSoup(req, "html.parser")
-    data = {
-        "status": "success",
-        "avatar": None,
-        "description": None,
-        "name": None,
-        "is_bot": False,
-        "is_verified": False,
-        "is_private": False,
-        "members": None,
-        "last_message": None,
-        "user_id": None,
-        "username": None
-    }
-
-    try:
-        data["avatar"] = soup.find("img", class_="Avatar_img___C2_3")["src"]
-        data["description"] = soup.find(
-            "div", class_="Profile_description__YTAr_").text
-        data["name"] = soup.find("h1", class_="Profile_name__pQglx").text
-    except BaseException:
-        pass
-
-    try:
-        json_data = json.loads(soup.find("script", id="__NEXT_DATA__").text)
-        page_props = json_data["props"]["pageProps"]
-
-        entity = page_props.get("user") or page_props.get("group") or {}
-        data["is_bot"] = entity.get("isBot", False)
-        data["is_verified"] = entity.get("isVerified", False)
-        data["is_private"] = entity.get("isPrivate", False)
-        data["members"] = page_props.get("group", {}).get("members")
-        data["user_id"] = page_props.get("peer", {}).get("id")
-        data["username"] = page_props.get("user", {}).get("nick")
-
-        messages = page_props.get("messages", [])
-        if messages:
-            last_msg = messages[-1].get("message", {})
-            data["last_message"] = (
-                last_msg.get("documentMessage", {}).get("caption", {}).get("text") or
-                last_msg.get("textMessage", {}).get("text")
-            )
-            if data["last_message"]:
-                data["last_message"] = data["last_message"].replace(
+    else:
+        soup = bs4.BeautifulSoup(req, "html.parser")
+        avatar_class = "Avatar_img___C2_3"
+        description_class = "Profile_description__YTAr_"
+        name_class = "Profile_name__pQglx"
+        json_script_id = "__NEXT_DATA__"
+        try:
+            avatar = soup.find("img", class_=avatar_class)["src"]
+        except:
+            avatar = None
+        try:
+            description = soup.find("div", class_=description_class).text
+        except:
+            description = None
+        try:
+            name = soup.find("h1", class_=name_class).text
+        except:
+            name = None
+        try:
+            json_script = soup.find("script", id=json_script_id).text
+        except:
+            json_script = None
+        try:
+            json_data = json.loads(json_script)
+        except:
+            json_data = {}
+        try:
+            is_bot = json_data["props"]["pageProps"]["user"]["isBot"]
+        except:
+            is_bot = False
+        try:
+            try:
+                is_verified = json_data["props"]["pageProps"]["user"]["isVerified"]
+            except:
+                is_verified = json_data["props"]["pageProps"]["group"]["isVerified"]
+        except:
+            is_verified = False
+        try:
+            is_private = True
+            if json_data["props"]["pageProps"]["user"] == None:
+                is_private = False
+        except:
+            is_private = False
+        try:
+            members = json_data["props"]["pageProps"]["group"]["members"]
+        except:
+            members = None
+        try:
+            last_message = json_data["props"]["pageProps"]["messages"][-1]["message"]["documentMessage"]["caption"]["text"].replace(
+                "&zwnj;", "")
+        except:
+            try:
+                last_message = json_data["props"]["pageProps"]["messages"][-1]["message"]["textMessage"]["text"].replace(
                     "&zwnj;", "")
-    except BaseException:
-        pass
-
-    return data
+            except:
+                last_message = None
+        try:
+            user_id = json_data["props"]["pageProps"]["peer"]["id"]
+        except:
+            user_id = None
+        try:
+            username = json_data["props"]["pageProps"]["user"]["nick"]
+        except:
+            username = None
+        return {
+            "status": "success",
+            "avatar": avatar,
+            "description": description,
+            "name": name,
+            "is_bot": is_bot,
+            "is_verified": is_verified,
+            "is_private": is_private,
+            "members": members,
+            "last_message": last_message,
+            "user_id": user_id,
+            "username": username
+        }
 
 
 def get_request_data():

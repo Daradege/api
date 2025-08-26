@@ -234,7 +234,7 @@ def get_request_data():
 @app.errorhandler(500)
 def internal_error(error):
     return jsonify(
-        {"error": "Internal Server Error, Call the support (https://t.me/daradege https://ble.ir/daradege)"}), 500
+        {"error": "Internal Server Error"}), 500
 
 
 @app.errorhandler(400)

@@ -1288,7 +1288,7 @@ def linkirani():
     elif request.method == 'GET':
         url = request.args.get("url")
         
-    url = "https://api.linkirani.ir/apiv1/shortlink"
+    api = "https://api.linkirani.ir/apiv1/shortlink"
     
     headers = {
         "accept": "application/json, text/plain, */*",
@@ -1312,7 +1312,7 @@ def linkirani():
         "url": url
     }
     
-    req = requests.post(url, headers=headers, json=data)
+    req = requests.post(api, headers=headers, json=data)
     
     if req.status_code == 200:
         return req.json()

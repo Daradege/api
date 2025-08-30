@@ -1280,6 +1280,44 @@ def time():
     }
     return jsonify(date_json)
 
+@app.route("/linkirani", methods=["POST","GET"])
+def linkirani():
+    
+    if request.method == 'POST':
+        url = request.get_json().get("url")
+    elif request.method == 'GET':
+        url = request.args.get("url")
+        
+    url = "https://api.linkirani.ir/apiv1/shortlink"
+    
+    headers = {
+        "accept": "application/json, text/plain, */*",
+        "accept-encoding": "gzip, deflate, br, zstd",
+        "accept-language": "en-US,en;q=0.9",
+        "content-length": "98",
+        "content-type": "application/json;charset=UTF-8",
+        "origin": "https://linkirani.ir",
+        "priority": "u=1, i",
+        "referer": "https://linkirani.ir/",
+        "sec-ch-ua": '"Chromium";v="139", "Not;A=Brand";v="99"',
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": '"Linux"',
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-site",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36"
+    }
+    
+    data = {
+        "url": url
+    }
+    
+    req = requests.post(url, headers=headers, json=data)
+    
+    if req.status_code == 200:
+        return req.json()
+    else:
+        return jsonify({"status": "error", "message": "an error from https://linkirani.ir"}), req.status_code
 
 if __name__ == "__main__":
     app.run('0.0.0.0', 8080)

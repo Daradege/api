@@ -1,8 +1,8 @@
 {
     "show": true,
-    "type": "info",
-    "title": "The source is now open!",
-    "message": "check top of the page for github link",
+    "type": "success",
+    "title": "Update soon!",
+    "message": "help us by giving stars!",
     "duration": 8000,
     "closable": true
 }

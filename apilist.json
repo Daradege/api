@@ -585,5 +585,20 @@
     ],
     "returns": "Data from the URL as JSON",
     "example": "${baseUrl}get_directurl_data?url=https://daradege.ir/logo.png"
+  },
+  {
+    "title": "Link Irani",
+    "method": "GET/POST",
+    "url": "/linkirani",
+    "description": "Fetches informations about a download link and detect if is's half price",
+    "parameters": [
+      {
+        "name": "url",
+        "required": true,
+        "description": "URL to fetch data from"
+      }
+    ],
+    "returns": "Data from the URL as JSON",
+    "example": "${baseUrl}linkirani?url=https://daradege.ir/logo.png"
   }
 ]

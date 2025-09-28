@@ -1319,5 +1319,27 @@ def linkirani():
     else:
         return jsonify({"status": "error", "message": "an error from https://linkirani.ir"}), req.status_code
 
+@app.route("/bale_pic", methods=["POST","GET"])
+def bale_pic():
+    if request.method == "GET":
+        username = request.args.get("username")
+    elif request.method == "POST":
+        username = request.get_json().get("username")
+    else:
+        return jsonify(
+            {"status": "error", "message": "Invalid request method"}), 400
+    if not username:
+        return jsonify(
+            {"status": "error", "message": "Username is required"}), 400
+
+    data = get_data_from_id(username)
+
+    if data["status"] == "error":
+        return jsonify({"status": "error", "message": "User not found"}), 404
+
+    data = requests.get(data["avatar"]).content
+    return Response(data, mimetype="image/jpeg")
+
+
 if __name__ == "__main__":
     app.run('0.0.0.0', 8080)

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const popup_json = "https://raw.githubusercontent.com/Daradege/api/refs/heads/main/popup.json"
+    const popup_json = "/popup.json"
     fetch(popup_json)
         .then(response => response.json())
         .then(data => {
@@ -60,9 +60,9 @@ function submitReport(event) {
         });
 }
 
-const baseUrl = "https://api.daradege.ir/";
+const baseUrl = "https://api.devnw.ir/";
 
-var api_file_json = "https://raw.githubusercontent.com/Daradege/api/refs/heads/main/apilist.json";
+var api_file_json = "/apilist.json";
 
 function fetchApiEndpoints() {
     fetch(api_file_json)

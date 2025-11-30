@@ -130,7 +130,7 @@ def get_holiday(date):
 
 def get_owghat(city="تهران"):
     return requests.get(
-        f"https://api.daradege.ir/owghat?city={city}").json()['owghat']
+        f"https://api.devnw.ir/owghat?city={city}").json()['owghat']
 
 
 def get_ping(host):
@@ -252,19 +252,21 @@ def home():
     return open("mainpage.html", encoding="utf-8").read()
 
 
-@app.route("/aimagic.jpg", methods=["GET", "POST"])
+@app.route("/script.js", methods=["GET", "POST"])
 def aimagic():
-    return send_file("static/aimagic.jpg", mimetype="image/jpeg")
+    return send_file("script.js", mimetype="js")
 
-
-@app.route('/manifest.json', methods=["GET", "POST"])
+@app.route('/style.css', methods=["GET", "POST"])
 def manifest():
-    return send_file("static/manifest.json", mimetype="application/json")
+    return send_file("style.css", mimetype="css")
 
-
-@app.route('/service-worker.js', methods=["GET", "POST"])
+@app.route('/popup.json', methods=["GET", "POST"])
 def service_worker():
-    return send_file("static/service-worker.js", mimetype="text/javascript")
+    return send_file("popup.json", mimetype="json")
+
+@app.route('/apilist.json', methods=["GET", "POST"])
+def service_worker():
+    return send_file("apilist.json", mimetype="json")
 
 
 @app.route("/tts", methods=["GET", "POST"])
@@ -343,8 +345,8 @@ def process_openrouter_request(text, model, history=[]):
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://api.daradege.ir",
-        "X-Title": "api.daradege.ir",
+        "HTTP-Referer": "https://api.devnw.ir",
+        "X-Title": "api.devnw.ir",
     }
     messages = history + [{"role": "user", "content": text}]
     data = {

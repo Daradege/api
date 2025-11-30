@@ -253,19 +253,19 @@ def home():
 
 
 @app.route("/script.js", methods=["GET", "POST"])
-def aimagic():
+def script():
     return send_file("script.js", mimetype="js")
 
 @app.route('/style.css', methods=["GET", "POST"])
-def manifest():
+def stylecss():
     return send_file("style.css", mimetype="css")
 
 @app.route('/popup.json', methods=["GET", "POST"])
-def service_worker():
+def popupjson():
     return send_file("popup.json", mimetype="json")
 
 @app.route('/apilist.json', methods=["GET", "POST"])
-def service_worker():
+def apilist():
     return send_file("apilist.json", mimetype="json")
 
 
